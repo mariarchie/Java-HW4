@@ -16,7 +16,6 @@ class Passenger {
         this.checkoutLocation = checkoutLocation;
         this.checkoutTime = checkoutTime;
     }
-
 }
 
 class Route {
