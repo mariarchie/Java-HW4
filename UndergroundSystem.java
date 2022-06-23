@@ -61,8 +61,9 @@ class UndergroundSystem {
         if (passenger != null) {
             passenger.checkout(stationName, t);
             String routeKey = passenger.checkinLocation + "," + passenger.checkoutLocation;
-            Route route = routeMap.getOrDefault(routeKey,
+            Route route = routeMap.putIfAbsent(routeKey,
                     new Route(passenger.checkinLocation, passenger.checkoutLocation));
+            route = routeMap.get(routeKey);
             route.addTrip(passenger.checkinTime, passenger.checkoutTime);
             routeMap.put(routeKey, route);
         }
